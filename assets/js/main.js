@@ -211,7 +211,7 @@
 
     // ── AVIS SLIDER ──
     const avisTrack = document.querySelector('.avis-track');
-    const avisCards = document.querySelectorAll('.avis-card');
+    const getAvisCards = () => document.querySelectorAll('.avis-card');
     const prevBtn = document.querySelector('.avis-prev');
     const nextBtn = document.querySelector('.avis-next');
 
@@ -224,12 +224,12 @@
     }
 
     function getMaxSlide() {
-        return Math.max(0, avisCards.length - getCardsPerView());
+        return Math.max(0, getAvisCards().length - getCardsPerView());
     }
 
     function updateSlider() {
-        if (!avisCards.length) return;
-        const cardWidth = avisCards[0].offsetWidth + 24; // gap
+        if (!getAvisCards().length) return;
+        const cardWidth = getAvisCards()[0].offsetWidth + 24; // gap
         avisTrack.style.transform = `translateX(-${currentSlide * cardWidth}px)`;
     }
 
@@ -277,6 +277,8 @@
                 updateSlider();
             }, 5000);
         });
+
+        document.addEventListener('opd:avis', () => { currentSlide = 0; updateSlider(); });
 
         // Reset on resize
         window.addEventListener('resize', () => {
@@ -361,8 +363,35 @@
 
             const resume = `Nouvel avis — ${'★'.repeat(data.note)} (${data.note}/5)\nDe : ${data.nom} <${data.email}>\n\n${data.avis}`;
 
-            // Pas encore de clé Web3Forms : on passe par l'email ou WhatsApp
-            if (!CFG.web3formsKey) {
+            const successText = formSuccess.querySelector('p');
+            successText.textContent = 'Merci pour votre avis ! Il sera publié après vérification.';
+
+            // 1. Google Sheet de la boulangerie : l'avis est enregistré et peut s'afficher sur le site
+            if (CFG.avisSheetUrl) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Envoi…';
+                try {
+                    const res = await fetch(CFG.avisSheetUrl, {
+                        method: 'POST',
+                        body: JSON.stringify(data) // envoyé en texte simple (compatible Google Apps Script)
+                    });
+                    const json = await res.json();
+                    if (!json.ok) throw new Error('refusé');
+                    if (json.publie && json.avis && window.OPD && window.OPD.avisCard) {
+                        document.getElementById('avisTrack').insertAdjacentHTML('afterbegin', window.OPD.avisCard(json.avis));
+                        document.dispatchEvent(new Event('opd:avis'));
+                        successText.textContent = 'Merci ! Votre avis est publié sur notre site.';
+                    }
+                } catch (err) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Envoyer mon avis';
+                    return showError('L\'envoi a échoué. Réessayez ou appelez-nous directement.');
+                }
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Envoyer mon avis';
+
+            // 2. Pas de Google Sheet ni de clé Web3Forms : email ou WhatsApp
+            } else if (!CFG.web3formsKey) {
                 if (CFG.email) {
                     window.location.href = `mailto:${CFG.email}?subject=${encodeURIComponent('Avis client — Ô Pain Doré')}&body=${encodeURIComponent(resume)}`;
                 } else if (CFG.whatsapp && window.OPD) {

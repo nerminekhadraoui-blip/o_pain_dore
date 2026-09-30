@@ -130,9 +130,7 @@
   });
 
   /* ── Avis ── */
-  const track = $("#avisTrack");
-  if (track && window.OPD_AVIS) {
-    track.innerHTML = window.OPD_AVIS.map((a) => `
+  const avisCard = (a) => `
       <div class="avis-card">
         <div class="avis-stars" aria-label="${a.note} sur 5">${"★".repeat(a.note)}${"☆".repeat(5 - a.note)}</div>
         <p class="avis-text">« ${esc(a.texte)} »</p>
@@ -142,8 +140,25 @@
             <strong>${esc(a.nom)}</strong>
             <span>${esc(a.date || "")}${a.source ? " · " + esc(a.source) : ""}</span>
           </div>
-          ${a.exemple ? '<span class="tag-exemple">Exemple</span>' : ""}
         </div>
-      </div>`).join("");
+      </div>`;
+  window.OPD.avisCard = avisCard;
+
+  const track = $("#avisTrack");
+  if (track && window.OPD_AVIS) {
+    track.innerHTML = window.OPD_AVIS.map(avisCard).join("");
+  }
+
+  // Avis laissés sur le site (Google Sheet de la boulangerie)
+  if (track && C.avisSheetUrl) {
+    fetch(C.avisSheetUrl)
+      .then((res) => res.json())
+      .then((json) => {
+        const avis = (json && json.avis) || [];
+        if (!avis.length) return;
+        track.insertAdjacentHTML("afterbegin", avis.map(avisCard).join(""));
+        document.dispatchEvent(new Event("opd:avis"));
+      })
+      .catch(() => { /* en cas d'erreur, on garde les avis Google */ });
   }
 })();

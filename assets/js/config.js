@@ -33,6 +33,12 @@ window.OPD_CONFIG = {
     { jours: "Dimanche",       heures: "07:00 — 14:00" }
   ],
 
+  // ── Avis laissés sur le site ─────────────────────────────
+  // Adresse de l'application Google Apps Script liée au Google Sheet
+  // « Avis Ô Pain Doré » (se termine par /exec). Voir outils/avis-google-sheet.gs
+  // Vide = le formulaire utilise Web3Forms, l'email ou WhatsApp.
+  avisSheetUrl: "",
+
   // ── Formulaire « Laisser un avis » ───────────────────────
   // Créer une clé gratuite sur https://web3forms.com avec l'email
   // de la boulangerie, puis la coller ci-dessous.
