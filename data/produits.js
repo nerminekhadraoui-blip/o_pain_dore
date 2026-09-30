@@ -23,12 +23,13 @@ const U = (id) => `https://images.unsplash.com/photo-${id}?w=500&q=80`;
 
 window.OPD_PRODUITS = [
   // Viennoiseries
+  { categorie: "viennoiseries", nom: "Croissant Chocolat Noisette", description: "Pâte feuilletée, chocolat fondant et éclats de noisette", prix: 2.7, badge: "Incontournable", photo: "assets/img/produits/croissant-chocolat-noisette.jpg" },
   { categorie: "viennoiseries", nom: "Croissant", description: "Pur beurre, feuilletage croustillant", prix: 2, photo: U("1555507036-ab1f4038024a") },
   { categorie: "viennoiseries", nom: "Pain au Chocolat", description: "Pâte feuilletée pur beurre, chocolat", prix: 2.4, photo: U("1623334044303-241021148842") },
   { categorie: "viennoiseries", nom: "Pain aux Raisins", description: "Crème pâtissière et raisins secs", prix: 2.4, photo: U("1608198093002-ad4e005484ec") },
   { categorie: "viennoiseries", nom: "Pain Suisse", description: "Crème pâtissière et pépites de chocolat", prix: 4.5, photo: "" },
   { categorie: "viennoiseries", nom: "Croissant Pistache", description: "Croissant pur beurre à la pistache", prix: 4, photo: "" },
-  { categorie: "viennoiseries", nom: "New York Pistache", description: "Le fameux rouleau new-yorkais, version pistache", prix: 9.5, badge: "Incontournable", photo: "" },
+  { categorie: "viennoiseries", nom: "New York Pistache", description: "Le fameux rouleau new-yorkais, version pistache", prix: 9.5, photo: "" },
 
   // Pâtisseries individuelles
   { categorie: "patisseries", nom: "O Pistacho Gourmand", description: "Notre gourmandise signature à la pistache", prix: 10.5, badge: "Signature", photo: "assets/img/produits/o-pistacho-gourmand.jpg" },
@@ -59,10 +60,12 @@ window.OPD_PRODUITS = [
   { categorie: "snacks", nom: "Salade Niçoise", description: "La grande classique", prix: 14.5, photo: "" },
 
   // Café & boissons
+  { categorie: "boissons", nom: "Café Glacé", description: "Espresso, lait frais et glaçons", prix: 9, badge: "Coup de cœur", photo: "assets/img/produits/cafe-glace.jpg" },
+  { categorie: "boissons", nom: "Café Spécial", description: "La recette maison", prix: 5, photo: "assets/img/produits/cafe-special.jpg" },
+  { categorie: "boissons", nom: "Café Crème", description: "Espresso allongé au lait", prix: 4.5, photo: "assets/img/produits/cafe-creme.jpg" },
+  { categorie: "boissons", nom: "Mojito Spécial", description: "Sans alcool, fruits rouges, citron vert et menthe", prix: 12, photo: "assets/img/produits/mojito-special.jpg" },
   { categorie: "boissons", nom: "Espresso", description: "Serré et intense", prix: 3.5, photo: "" },
   { categorie: "boissons", nom: "Capucin", description: "Espresso et mousse de lait", prix: 4, photo: U("1495774856032-8b90bbb32b32") },
-  { categorie: "boissons", nom: "Café Crème", description: "Espresso allongé au lait chaud", prix: 4.5, photo: U("1461023058943-07fcbe16d735") },
   { categorie: "boissons", nom: "Chocolat Chaud", description: "Onctueux et réconfortant", prix: 7.5, photo: U("1544145945-f90425340c7e") },
-  { categorie: "boissons", nom: "Citronnade", description: "Maison, bien fraîche", prix: 6, photo: "" },
   { categorie: "boissons", nom: "Jus d'Orange", description: "Pressé minute", prix: 6.5, photo: U("1556679343-c7306c1976bc") }
 ];
