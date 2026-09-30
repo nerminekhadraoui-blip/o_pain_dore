@@ -52,7 +52,10 @@
   document.querySelectorAll("[data-fetes-only]").forEach((el) => { if (!hasFetes) el.remove(); });
   document.querySelectorAll("[data-fetes-titre]").forEach((el) => { el.textContent = `${fetes.titre || ""} ${fetes.annee || ""}`.trim(); });
   document.querySelectorAll("[data-fetes-message]").forEach((el) => { el.textContent = fetes.message || ""; });
-  document.querySelectorAll("[data-fetes-limite]").forEach((el) => { el.textContent = fetes.dateLimite || ""; });
+  document.querySelectorAll("[data-fetes-limite]").forEach((el) => {
+    if (!fetes.dateLimite) return el.closest(".fetes-limite")?.remove();
+    el.textContent = fetes.dateLimite;
+  });
 
   /* ── La carte ── */
   const tabs = $("#categoryTabs");
@@ -71,7 +74,7 @@
         <div class="product-info">
           <h3>${esc(p.nom)}</h3>
           <p>${esc(p.description)}</p>
-          <span class="product-price">${prix(p.prix)}</span>
+          ${p.prix ? `<span class="product-price">${prix(p.prix)}</span>` : `<span class="product-price product-price--boutique">Prix en boutique</span>`}
         </div>
       </article>`).join("");
   }

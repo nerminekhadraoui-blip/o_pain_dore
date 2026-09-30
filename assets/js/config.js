@@ -27,10 +27,10 @@ window.OPD_CONFIG = {
   facebook: "",
   tiktok: "",
 
-  // ── Horaires (À VÉRIFIER) ────────────────────────────────
+  // ── Horaires ─────────────────────────────────────────────
   horaires: [
-    { jours: "Lundi — Samedi", heures: "06:30 — 20:00" },
-    { jours: "Dimanche",       heures: "07:00 — 14:00" }
+    { jours: "Lundi — Samedi", heures: "06:30 — 19:30" },
+    { jours: "Dimanche",       heures: "Fermé" }
   ],
 
   // ── Avis laissés sur le site ─────────────────────────────
@@ -52,7 +52,7 @@ window.OPD_CONFIG = {
     titre: "Collection des Fêtes",
     annee: "2026",
     message: "Bûches et entremets de fin d'année — commandes ouvertes",
-    dateLimite: "Commandes jusqu'au 20 décembre, dans la limite des places disponibles"
+    dateLimite: ""                        // ex. "Commandes jusqu'au 20 décembre" — vide = masqué
   },
 
   delaiCommandeParDefaut: "48h à l'avance"

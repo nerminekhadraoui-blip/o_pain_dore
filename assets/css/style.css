@@ -1872,3 +1872,11 @@ input, textarea {
   text-transform: uppercase;
   color: var(--color-text-light);
 }
+
+.product-price--boutique {
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+}
