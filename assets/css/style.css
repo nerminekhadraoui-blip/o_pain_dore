@@ -771,7 +771,7 @@ input, textarea {
 .histoire-img-wrapper {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 3/4;
+  aspect-ratio: 4/3;
 }
 
 .histoire-img-wrapper::after {
@@ -785,10 +785,11 @@ input, textarea {
 }
 
 .histoire-img {
+  display: block;
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center;
+  object-fit: cover;
+  object-position: center 40%;
   transition: transform 0.8s var(--ease-out-expo);
 }
 
@@ -816,8 +817,9 @@ input, textarea {
 }
 
 .histoire-values {
-  display: flex;
-  gap: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
   margin-top: 40px;
   padding-top: 30px;
   border-top: 1px solid var(--color-border);
@@ -826,19 +828,21 @@ input, textarea {
 .value-item {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
 }
 
 .value-number {
-  font-family: var(--font-sans);
-  font-size: 10px;
+  font-family: var(--font-display);
+  font-size: clamp(32px, 3vw, 44px);
+  font-style: italic;
+  line-height: 1;
   color: var(--color-gold);
-  letter-spacing: 0.1em;
 }
 
 .value-text {
   font-family: var(--font-serif);
-  font-size: 16px;
+  font-size: clamp(19px, 1.6vw, 23px);
+  line-height: 1.25;
   font-weight: 400;
   color: var(--color-text);
 }
@@ -851,8 +855,7 @@ input, textarea {
       aspect-ratio: 4/3;
   }
   .histoire-values {
-      flex-wrap: wrap;
-      gap: 24px;
+      gap: 16px;
   }
 }
 
