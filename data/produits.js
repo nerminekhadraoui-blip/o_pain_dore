@@ -31,14 +31,16 @@ window.OPD_PRODUITS = [
   { categorie: "viennoiseries", nom: "New York Pistache", description: "Le fameux rouleau new-yorkais, version pistache", prix: 9.5, badge: "Incontournable", photo: "" },
 
   // Pâtisseries individuelles
+  { categorie: "patisseries", nom: "O Pistacho Gourmand", description: "Notre gourmandise signature à la pistache", prix: 10.5, badge: "Signature", photo: "assets/img/produits/o-pistacho-gourmand.jpg" },
+  { categorie: "patisseries", nom: "Fraisier", description: "Crème légère et fraises fraîches", prix: 9, photo: "assets/img/produits/fraisier.jpg" },
+  { categorie: "patisseries", nom: "Tout Chocolat", description: "Biscuit et crémeux au chocolat", prix: 8, photo: "assets/img/produits/tout-chocolat.jpg" },
+  { categorie: "patisseries", nom: "Chocolat Noisette", description: "Couches croustillantes, crème noisette, glaçage chocolat", prix: 9.5, photo: "assets/img/produits/chocolat-noisette.jpg" },
+  { categorie: "patisseries", nom: "O Framboise", description: "Biscuit, confit de framboise, macaron", prix: 9.5, photo: "assets/img/produits/o-framboise.jpg" },
+  { categorie: "patisseries", nom: "Tarte Pistache", description: "Pâte sablée, crème pistache, pistaches concassées", prix: 8, photo: "assets/img/produits/tarte-pistache.jpg" },
   { categorie: "patisseries", nom: "Mille-feuille Vanille", description: "Feuilletage caramélisé, crème vanille", prix: 3.5, photo: U("1587668178277-295251f900ce") },
-  { categorie: "patisseries", nom: "Éclair Chocolat", description: "Pâte à choux, crème chocolat", prix: 6, photo: U("1571115177098-24ec42ed204d") },
-  { categorie: "patisseries", nom: "Éclair Pistache", description: "Pâte à choux, crème pistache", prix: 7, photo: "" },
   { categorie: "patisseries", nom: "Tarte Citron", description: "Crème citron et meringue légère", prix: 7.5, photo: "" },
+  { categorie: "patisseries", nom: "Éclair Chocolat", description: "Pâte à choux, crème chocolat", prix: 6, photo: U("1571115177098-24ec42ed204d") },
   { categorie: "patisseries", nom: "Tarte aux Fruits", description: "Pâte sablée, fruits frais de saison", prix: 6.5, photo: U("1519915028121-7d3463d20b13") },
-  { categorie: "patisseries", nom: "Opéra", description: "L'entremets classique café-chocolat", prix: 8, photo: "" },
-  { categorie: "patisseries", nom: "O Pistacho Gourmand", description: "Notre gourmandise signature à la pistache", prix: 10.5, badge: "Signature", photo: "" },
-  { categorie: "patisseries", nom: "Tiramisu", description: "En verrine, mascarpone et café", prix: 9, photo: "" },
 
   // Pains & cakes — farines spéciales
   { categorie: "pains", nom: "Baguette Tradition", description: "Croûte craquante, mie alvéolée", prix: 0, photo: U("1574085733277-851d9d856a3a") },
