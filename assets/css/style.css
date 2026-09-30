@@ -1238,6 +1238,7 @@ input, textarea {
 
 .avis-card {
   min-width: calc(33.333% - 16px);
+  max-width: calc(33.333% - 16px);
   background: var(--color-white);
   padding: 36px;
   flex-shrink: 0;
@@ -1327,12 +1328,14 @@ input, textarea {
 @media (max-width: 1024px) {
   .avis-card {
       min-width: calc(50% - 12px);
+      max-width: calc(50% - 12px);
   }
 }
 
 @media (max-width: 600px) {
   .avis-card {
       min-width: 100%;
+      max-width: 100%;
       padding: 24px;
   }
 }
@@ -1660,4 +1663,168 @@ input, textarea {
       flex-direction: column;
       align-items: center;
   }
+}
+/* ============================================
+   AJOUTS — refonte 2026
+   Bandeau des fêtes, commande de gâteaux,
+   avis, formulaire, accessibilité
+   ============================================ */
+
+/* ── BANDEAU COLLECTION DES FÊTES ── */
+.fetes-ribbon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  padding: 16px var(--container-padding);
+  background: linear-gradient(90deg, var(--color-gold-dark), var(--color-gold), var(--color-gold-dark));
+  color: var(--color-white);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-align: center;
+  transition: filter var(--transition-fast);
+}
+.fetes-ribbon:hover { filter: brightness(1.06); }
+.fetes-ribbon strong {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.fetes-ribbon-cta {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  padding-bottom: 2px;
+}
+@media (max-width: 600px) {
+  .fetes-ribbon-sep { display: none; }
+  .fetes-ribbon > span[data-fetes-message] { flex-basis: 100%; }
+}
+
+.fetes-limite {
+  margin-top: 18px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--color-gold-light);
+}
+.fetes-limite span:first-child { font-style: normal; margin-right: 4px; }
+
+/* ── GÂTEAUX : tailles sélectionnables + actions ── */
+.collection-tabs .tab-btn { color: rgba(245, 240, 232, 0.65); border-color: rgba(198, 169, 108, 0.3); }
+.collection-tabs .tab-btn.active { color: var(--color-white); }
+.gateau-card.hidden { display: none; }
+
+.gateau-badge { z-index: 2; }
+
+.gateau-sizes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid rgba(198, 169, 108, 0.15);
+  padding-top: 16px;
+}
+.gateau-sizes .size-option {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid rgba(198, 169, 108, 0.12);
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.gateau-sizes .size-option:not(:last-child) { border-bottom: 1px solid rgba(198, 169, 108, 0.12); }
+.gateau-sizes .size-option:hover { border-color: rgba(198, 169, 108, 0.5); }
+.gateau-sizes .size-option.selected {
+  border-color: var(--color-gold);
+  background: rgba(198, 169, 108, 0.12);
+}
+.gateau-sizes .size-option.selected .size-label { color: var(--color-cream); }
+
+.gateau-delai {
+  margin: 16px 0 18px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.45);
+}
+.gateau-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.gateau-actions .btn { flex: 1 1 auto; justify-content: center; }
+
+.btn-outline-light {
+  border: 1px solid rgba(245, 240, 232, 0.35);
+  color: var(--color-cream);
+  background: transparent;
+}
+.btn-outline-light:hover {
+  border-color: #25D366;
+  background: #25D366;
+  color: var(--color-white);
+}
+
+.gateaux-cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* ── AVIS ── */
+.avis-author { position: relative; }
+.tag-exemple {
+  margin-left: auto;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border: 1px dashed var(--color-gold);
+  color: var(--color-gold-dark);
+}
+.avis-google { text-align: center; margin: -20px 0 50px; }
+.avis-google .btn-outline { color: var(--color-gold-dark); border-color: var(--color-gold); }
+.avis-google .btn-outline:hover { color: var(--color-white); }
+
+/* ── FORMULAIRE ── */
+.hp-field { position: absolute; left: -9999px; opacity: 0; }
+.star-rating .star {
+  background: none;
+  border: 0;
+  padding: 0 2px;
+  font-family: inherit;
+}
+.form-group label small { text-transform: none; letter-spacing: 0; opacity: 0.7; }
+.form-error {
+  display: none;
+  text-align: center;
+  font-size: 14px;
+  color: #A4432F;
+}
+.form-error.show { display: block; }
+.review-form .btn[disabled] { opacity: 0.6; cursor: wait; }
+
+/* ── ACCESSIBILITÉ ── */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-up { opacity: 1 !important; transform: none !important; }
 }

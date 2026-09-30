@@ -12,14 +12,14 @@
         setTimeout(() => {
             loader.classList.add('hidden');
             document.body.classList.remove('loading');
-        }, 2200);
+        }, 1200);
     });
 
     // Fallback: hide loader after max 4s
     setTimeout(() => {
         loader.classList.add('hidden');
         document.body.classList.remove('loading');
-    }, 4000);
+    }, 3000);
 
 
     // ── CUSTOM CURSOR ──
@@ -110,8 +110,11 @@
     // ── SMOOTH SCROLL ──
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (!href || href === '#') return;
+            const target = document.querySelector(href);
+            if (!target) return;
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
             if (target) {
                 const headerHeight = header.offsetHeight;
                 const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
@@ -145,30 +148,61 @@
     });
 
 
-    // ── PRODUCT CATEGORY FILTER ──
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const productCards = document.querySelectorAll('.product-card');
+    // ── FILTRES (carte + collections de gâteaux) ──
+    function setupFilter(tabsId, cardSelector, attr) {
+        const tabsEl = document.getElementById(tabsId);
+        if (!tabsEl) return;
+        const cards = document.querySelectorAll(cardSelector);
 
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Update active tab
-            tabBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const category = btn.getAttribute('data-category');
-
-            productCards.forEach((card, index) => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
-                    card.classList.remove('hidden');
+        function apply(value, animate) {
+            tabsEl.querySelectorAll('.tab-btn').forEach(b => {
+                const on = b.dataset[attr] === value;
+                b.classList.toggle('active', on);
+                b.setAttribute('aria-selected', on);
+            });
+            let shown = 0;
+            cards.forEach(card => {
+                const match = value === 'all' || card.dataset[attr] === value;
+                card.classList.toggle('hidden', !match);
+                if (match && animate) {
+                    const delay = shown++ * 50;
                     card.style.opacity = '0';
                     card.style.transform = 'translateY(20px)';
                     setTimeout(() => {
                         card.style.transition = 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
                         card.style.opacity = '1';
                         card.style.transform = 'translateY(0)';
-                    }, index * 50);
-                } else {
-                    card.classList.add('hidden');
+                    }, delay);
+                }
+            });
+        }
+
+        tabsEl.addEventListener('click', (e) => {
+            const btn = e.target.closest('.tab-btn');
+            if (btn) apply(btn.dataset[attr], true);
+        });
+
+        const first = tabsEl.querySelector('.tab-btn.active') || tabsEl.querySelector('.tab-btn');
+        if (first) apply(first.dataset[attr], false);
+    }
+
+    setupFilter('categoryTabs', '.product-card', 'category');
+    setupFilter('collectionTabs', '.gateau-card', 'collection');
+
+
+    // ── CHOIX DE TAILLE (gâteaux) → met à jour le message WhatsApp ──
+    document.querySelectorAll('.gateau-card').forEach(card => {
+        const sizes = card.querySelectorAll('.size-option');
+        const wa = card.querySelector('.js-wa');
+        sizes.forEach(btn => {
+            btn.addEventListener('click', () => {
+                sizes.forEach(b => {
+                    b.classList.toggle('selected', b === btn);
+                    b.setAttribute('aria-checked', b === btn);
+                });
+                if (wa && window.OPD) {
+                    const msg = `Bonjour Ô Pain Doré ! Je souhaite commander le gâteau « ${card.dataset.nom} » (${btn.dataset.label} — ${window.OPD.prix(btn.dataset.prix)}). Pour le : `;
+                    wa.href = window.OPD.waLink(msg);
                 }
             });
         });
@@ -194,6 +228,7 @@
     }
 
     function updateSlider() {
+        if (!avisCards.length) return;
         const cardWidth = avisCards[0].offsetWidth + 24; // gap
         avisTrack.style.transform = `translateX(-${currentSlide * cardWidth}px)`;
     }
@@ -288,41 +323,86 @@
     });
 
 
-    // ── REVIEW FORM ──
+    // ── FORMULAIRE D'AVIS ──
+    // Envoi vers la boîte mail de la boulangerie via Web3Forms
+    // (clé à renseigner dans assets/js/config.js → web3formsKey).
     const reviewForm = document.getElementById('reviewForm');
     const formSuccess = document.getElementById('formSuccess');
+    const formError = document.getElementById('formError');
+    const submitBtn = document.getElementById('reviewSubmit');
+    const CFG = window.OPD_CONFIG || {};
+
+    function showError(msg) {
+        if (formError) { formError.textContent = msg; formError.classList.add('show'); }
+    }
+
+    function resetForm() {
+        reviewForm.reset();
+        selectedRating = 0;
+        stars.forEach(s => { s.classList.remove('active'); s.style.color = ''; });
+    }
 
     if (reviewForm) {
-        reviewForm.addEventListener('submit', (e) => {
+        reviewForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+            if (formError) formError.classList.remove('show');
 
-            if (selectedRating === 0) {
-                alert('Veuillez sélectionner une note.');
-                return;
-            }
-
-            // Simulate form submission
-            const formData = {
-                name: document.getElementById('reviewName').value,
-                email: document.getElementById('reviewEmail').value,
-                rating: selectedRating,
-                message: document.getElementById('reviewText').value
+            const data = {
+                nom: document.getElementById('reviewName').value.trim(),
+                email: document.getElementById('reviewEmail').value.trim(),
+                note: selectedRating,
+                avis: document.getElementById('reviewText').value.trim()
             };
 
-            console.log('Review submitted:', formData);
+            if (!data.nom || !data.avis) return showError('Merci d\'indiquer votre nom et votre avis.');
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) return showError('Merci d\'indiquer un email valide.');
+            if (!data.note) return showError('Merci de choisir une note en cliquant sur les étoiles.');
+            if (reviewForm.botcheck && reviewForm.botcheck.checked) return; // robot
 
-            // Show success
+            const resume = `Nouvel avis — ${'★'.repeat(data.note)} (${data.note}/5)\nDe : ${data.nom} <${data.email}>\n\n${data.avis}`;
+
+            // Pas encore de clé Web3Forms : on passe par l'email ou WhatsApp
+            if (!CFG.web3formsKey) {
+                if (CFG.email) {
+                    window.location.href = `mailto:${CFG.email}?subject=${encodeURIComponent('Avis client — Ô Pain Doré')}&body=${encodeURIComponent(resume)}`;
+                } else if (CFG.whatsapp && window.OPD) {
+                    window.open(window.OPD.waLink(resume), '_blank', 'noopener');
+                } else {
+                    return showError('Le formulaire n\'est pas encore configuré.');
+                }
+            } else {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Envoi…';
+                try {
+                    const res = await fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: JSON.stringify({
+                            access_key: CFG.web3formsKey,
+                            subject: `Nouvel avis ${data.note}/5 — ${data.nom}`,
+                            from_name: 'Site Ô Pain Doré',
+                            replyto: data.email,
+                            ...data
+                        })
+                    });
+                    const json = await res.json();
+                    if (!json.success) throw new Error(json.message);
+                } catch (err) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Envoyer mon avis';
+                    return showError('L\'envoi a échoué. Réessayez ou appelez-nous directement.');
+                }
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Envoyer mon avis';
+            }
+
             reviewForm.style.display = 'none';
             formSuccess.classList.add('show');
-
-            // Reset after 5s
             setTimeout(() => {
                 formSuccess.classList.remove('show');
                 reviewForm.style.display = 'flex';
-                reviewForm.reset();
-                selectedRating = 0;
-                stars.forEach(s => s.classList.remove('active'));
-            }, 5000);
+                resetForm();
+            }, 6000);
         });
     }
 
