@@ -119,6 +119,16 @@
     }).join("");
   }
 
+  /* ── Note Google ── */
+  document.querySelectorAll("[data-note-google]").forEach((el) => {
+    if (!C.noteGoogle) return el.remove();
+    const n = parseFloat(String(C.noteGoogle).replace(",", "."));
+    const pct = Math.max(0, Math.min(100, (n / 5) * 100));
+    el.innerHTML = `<span class="avis-summary-note">${esc(C.noteGoogle)}</span>
+      <span class="avis-summary-stars" aria-label="${esc(C.noteGoogle)} sur 5"><span style="width:${pct}%">★★★★★</span>★★★★★</span>
+      <span class="avis-summary-count">${C.nombreAvisGoogle ? esc(C.nombreAvisGoogle) + " avis " : ""}sur Google</span>`;
+  });
+
   /* ── Avis ── */
   const track = $("#avisTrack");
   if (track && window.OPD_AVIS) {

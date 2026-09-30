@@ -18,7 +18,9 @@ window.OPD_CONFIG = {
 
   adresse: "35 rue Garibaldi, Tunis",
   lienGoogleMaps: "https://share.google/j6yktT2wS4CkN2mq3",
-  lienAvisGoogle: "https://share.google/j6yktT2wS4CkN2mq3",
+  lienAvisGoogle: "https://share.google/JnN5GpYdDebJEFek0",
+  noteGoogle: "4,2",        // note affichée en haut des avis (vide = masquée)
+  nombreAvisGoogle: 216,    // à mettre à jour de temps en temps
 
   // ── Réseaux sociaux (vide = masqué) ──────────────────────
   instagram: "https://www.instagram.com/o_pain_dore1/",

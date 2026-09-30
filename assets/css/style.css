@@ -1831,3 +1831,44 @@ input, textarea {
   }
   .reveal-up { opacity: 1 !important; transform: none !important; }
 }
+
+/* ── Note Google (en-tête des avis) ── */
+.avis-summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 22px;
+  padding: 10px 22px;
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  color: var(--color-text);
+  transition: border-color var(--transition-fast);
+}
+.avis-summary:hover { border-color: var(--color-gold); }
+.avis-summary-note {
+  font-family: var(--font-display);
+  font-size: 30px;
+  line-height: 1;
+}
+.avis-summary-stars {
+  position: relative;
+  display: inline-block;
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: var(--color-border);
+  line-height: 1;
+}
+.avis-summary-stars > span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: var(--color-gold);
+}
+.avis-summary-count {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+}
