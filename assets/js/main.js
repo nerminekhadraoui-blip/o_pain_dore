@@ -201,7 +201,7 @@
                     b.setAttribute('aria-checked', b === btn);
                 });
                 if (wa && window.OPD) {
-                    const msg = `Bonjour Ô Pain Doré ! Je souhaite commander le gâteau « ${card.dataset.nom} » (${btn.dataset.label} — ${window.OPD.prix(btn.dataset.prix)}). Pour le : `;
+                    const msg = `Bonjour Ô Pain Doré ! Je souhaite commander le gâteau « ${card.dataset.nom} » (${btn.dataset.label}${Number(btn.dataset.prix) ? " — " + window.OPD.prix(btn.dataset.prix) : ""}). Pour le : `;
                     wa.href = window.OPD.waLink(msg);
                 }
             });

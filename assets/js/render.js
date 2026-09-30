@@ -106,7 +106,7 @@
               <button type="button" class="size-option${ti === 0 ? " selected" : ""}" role="radio" aria-checked="${ti === 0}"
                 data-label="${esc(t.label)}" data-prix="${t.prix}">
                 <span class="size-label">${esc(t.label)}</span>
-                <span class="size-price">${prix(t.prix)}</span>
+                <span class="size-price">${t.prix ? prix(t.prix) : "Sur devis"}</span>
               </button>`).join("")}
           </div>
           <p class="gateau-delai">Sur commande · ${esc(g.delai || C.delaiCommandeParDefaut || "")}</p>
