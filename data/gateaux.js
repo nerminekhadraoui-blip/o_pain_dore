@@ -31,6 +31,20 @@ window.OPD_GATEAUX = [
     disponible: true
   },
 
+  {
+    nom: "Bûche Fraises Chantilly",
+    description: "Chantilly légère, fraises fraîches et menthe",
+    collection: "fetes",
+    badge: "Fêtes 2026",
+    photo: "assets/img/gateaux/buche-fraises.jpg",
+    tailles: [
+      { label: "6 parts",  prix: 0 },
+      { label: "8 parts",  prix: 0 },
+      { label: "10 parts", prix: 0 }
+    ],
+    disponible: true
+  },
+
   // Modèles prêts à remplir (masqués tant que disponible: false)
   {
     nom: "Bûche Trois Chocolats",
@@ -60,6 +74,32 @@ window.OPD_GATEAUX = [
   },
 
   // ─────────────── NOS CLASSIQUES ───────────────
+  {
+    nom: "Entremets Pistache Framboise",
+    description: "Biscuit pistache, cœur framboise, mousse vanille et feuille d'or",
+    collection: "classiques",
+    badge: "Signature",
+    photo: "assets/img/gateaux/entremets-pistache-framboise.jpg",
+    tailles: [
+      { label: "6 parts",  prix: 0 },
+      { label: "8 parts",  prix: 0 },
+      { label: "10 parts", prix: 0 }
+    ],
+    disponible: true
+  },
+  {
+    nom: "Plaisir Chocolat Praliné",
+    description: "Fond chocolat, chocolat fondant et praliné noisette",
+    collection: "classiques",
+    badge: "",
+    photo: "assets/img/gateaux/plaisir-chocolat-praline.jpg",
+    tailles: [
+      { label: "6 parts",  prix: 0 },
+      { label: "8 parts",  prix: 0 },
+      { label: "10 parts", prix: 0 }
+    ],
+    disponible: true
+  },
   {
     nom: "Chocolat Intense",
     description: "Génoise chocolat, ganache montée au chocolat noir, feuilles d'or",
