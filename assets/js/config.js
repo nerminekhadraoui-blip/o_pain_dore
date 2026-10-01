@@ -14,7 +14,7 @@ window.OPD_CONFIG = {
   telephone: "+21621128626",          // format international, sans espaces
   telephoneAffiche: "+216 21 128 626", // format affiché sur le site
   whatsapp: "21621128626",            // mettre "" pour masquer les boutons WhatsApp
-  email: "",                          // ex. "contact@opaindore.tn" — vide = masqué
+  email: "",                          // ex. "contact@opaindoretunisie.com" — vide = masqué
 
   adresse: "35 rue Garibaldi, Tunis",
   lienGoogleMaps: "https://share.google/j6yktT2wS4CkN2mq3",

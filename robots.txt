@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.opaindore.tn/sitemap.xml
+Sitemap: https://www.opaindoretunisie.com/sitemap.xml
