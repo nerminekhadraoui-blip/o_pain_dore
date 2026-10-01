@@ -1895,3 +1895,13 @@ input, textarea {
   .espace-gallery .gallery-item.gallery-wide { aspect-ratio: 4/3; }
   .espace-gallery .gallery-item:last-child { grid-column: 1 / -1; aspect-ratio: 4/3; }
 }
+
+/* ── Bouton « Voir plus » ── */
+.voir-plus { display: flex; justify-content: center; margin-top: 40px; }
+.voir-plus[hidden] { display: none; }
+.voir-plus-btn { gap: 8px; }
+.produits .voir-plus-btn { color: var(--color-gold-dark); border-color: var(--color-gold); }
+.produits .voir-plus-btn:hover { color: var(--color-white); }
+.voir-plus-count { opacity: 0.7; }
+.tab-btn, .category-tabs { scroll-margin-top: 110px; }
+.category-tabs { scroll-margin-top: 110px; }

@@ -149,23 +149,50 @@
 
 
     // ── FILTRES (carte + collections de gâteaux) ──
-    function setupFilter(tabsId, cardSelector, attr) {
+    // Affiche un nombre limité de cartes + bouton « Voir plus »
+    function setupFilter(tabsId, cardSelector, attr, limit, btnClass) {
         const tabsEl = document.getElementById(tabsId);
         if (!tabsEl) return;
-        const cards = document.querySelectorAll(cardSelector);
+        const cards = [...document.querySelectorAll(cardSelector)];
+        if (!cards.length) return;
+        const grid = cards[0].parentElement;
+
+        const wrap = document.createElement('div');
+        wrap.className = 'voir-plus';
+        const more = document.createElement('button');
+        more.type = 'button';
+        more.className = 'btn ' + btnClass;
+        wrap.appendChild(more);
+        grid.after(wrap);
+
+        let current = null, expanded = false;
 
         function apply(value, animate) {
+            if (value !== current) expanded = false;
+            current = value;
             tabsEl.querySelectorAll('.tab-btn').forEach(b => {
                 const on = b.dataset[attr] === value;
                 b.classList.toggle('active', on);
                 b.setAttribute('aria-selected', on);
             });
+            const matches = cards.filter(c => value === 'all' || c.dataset[attr] === value);
+            // Aperçu : en « Tout », on pioche tour à tour dans chaque catégorie
+            let preview = matches.slice(0, limit);
+            if (value === 'all') {
+                const groups = {};
+                matches.forEach(c => (groups[c.dataset[attr]] ||= []).push(c));
+                const lists = Object.values(groups);
+                preview = [];
+                for (let i = 0; preview.length < limit && lists.some(l => l[i]); i++)
+                    lists.forEach(l => { if (l[i] && preview.length < limit) preview.push(l[i]); });
+            }
             let shown = 0;
             cards.forEach(card => {
-                const match = value === 'all' || card.dataset[attr] === value;
-                card.classList.toggle('hidden', !match);
-                if (match && animate) {
-                    const delay = shown++ * 50;
+                const pos = matches.indexOf(card);
+                const visible = pos !== -1 && (expanded || preview.includes(card));
+                card.classList.toggle('hidden', !visible);
+                if (visible && animate) {
+                    const delay = (shown++ % limit) * 50;
                     card.style.opacity = '0';
                     card.style.transform = 'translateY(20px)';
                     setTimeout(() => {
@@ -175,6 +202,12 @@
                     }, delay);
                 }
             });
+            const rest = matches.length - limit;
+            wrap.hidden = rest <= 0;
+            more.innerHTML = expanded
+                ? 'Voir moins <span aria-hidden="true">↑</span>'
+                : `Voir plus <span class="voir-plus-count">(${rest})</span> <span aria-hidden="true">↓</span>`;
+            more.setAttribute('aria-expanded', expanded);
         }
 
         tabsEl.addEventListener('click', (e) => {
@@ -182,12 +215,18 @@
             if (btn) apply(btn.dataset[attr], true);
         });
 
+        more.addEventListener('click', () => {
+            expanded = !expanded;
+            apply(current, expanded);
+            if (!expanded) tabsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
         const first = tabsEl.querySelector('.tab-btn.active') || tabsEl.querySelector('.tab-btn');
         if (first) apply(first.dataset[attr], false);
     }
 
-    setupFilter('categoryTabs', '.product-card', 'category');
-    setupFilter('collectionTabs', '.gateau-card', 'collection');
+    setupFilter('categoryTabs', '.product-card', 'category', 8, 'btn-outline voir-plus-btn');
+    setupFilter('collectionTabs', '.gateau-card', 'collection', 6, 'btn-outline-light voir-plus-btn');
 
 
     // ── CHOIX DE TAILLE (gâteaux) → met à jour le message WhatsApp ──
