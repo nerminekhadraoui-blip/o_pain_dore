@@ -84,9 +84,10 @@
   const gateaux = (window.OPD_GATEAUX || []).filter((g) => g.disponible !== false);
   const collTabs = $("#collectionTabs");
   if (collTabs) {
-    const opts = [];
+    const opts = [["all", "Tous les gâteaux"]];
     if (hasFetes) opts.push(["fetes", `✦ ${fetes.titre || "Fêtes"}`]);
-    opts.push(["classiques", "Nos classiques"], ["all", "Tous les gâteaux"]);
+    opts.push(["classiques", "Nos classiques"]);
+    if ((window.OPD_PERSONNALISES || []).length) opts.push(["personnalises", "Gâteaux personnalisés"]);
     collTabs.innerHTML = opts.map(([id, label], i) =>
       `<button class="tab-btn${i === 0 ? " active" : ""}" data-collection="${id}">${esc(label)}</button>`).join("");
   }
@@ -119,6 +120,24 @@
           </div>
         </div>
       </article>`;
+    }).join("") + (window.OPD_PERSONNALISES || []).map((p) => {
+      const msg = `Bonjour Ô Pain Doré ! Je souhaite commander un gâteau personnalisé (comme « ${p.legende} »). Mon idée : `;
+      return `
+      <article class="gateau-card gateau-perso reveal-up" data-collection="personnalises" data-nom="${esc(p.legende)}">
+        <div class="gateau-img">
+          ${imgTag(p.photo, "Gâteau personnalisé : " + p.legende)}
+          <div class="product-badge gateau-badge">Personnalisé</div>
+        </div>
+        <div class="gateau-info">
+          <h3>${esc(p.legende)}</h3>
+          <p>Votre message, vos couleurs, votre thème : on le réalise pour vous.</p>
+          <p class="gateau-delai">Sur devis · ${esc(C.delaiCommandeParDefaut || "")}</p>
+          <div class="gateau-actions">
+            <a class="btn btn-primary btn-sm" href="${telHref}">${ICON_TEL} Appeler</a>
+            ${C.whatsapp ? `<a class="btn btn-outline-light btn-sm" target="_blank" rel="noopener" href="${waLink(msg)}">${ICON_WA} WhatsApp</a>` : ""}
+          </div>
+        </div>
+      </article>`;
     }).join("");
   }
 
@@ -131,18 +150,6 @@
       <span class="avis-summary-stars" aria-label="${esc(C.noteGoogle)} sur 5"><span style="width:${pct}%">★★★★★</span>★★★★★</span>
       <span class="avis-summary-count">${C.nombreAvisGoogle ? esc(C.nombreAvisGoogle) + " avis " : ""}sur Google</span>`;
   });
-
-  /* ── Gâteaux personnalisés ── */
-  const persoGrid = $("#persoGrid");
-  if (persoGrid) {
-    const items = window.OPD_PERSONNALISES || [];
-    if (!items.length) persoGrid.closest(".perso")?.remove();
-    else persoGrid.innerHTML = items.map((p) => `
-      <figure class="perso-item">
-        ${imgTag(p.photo, "Gâteau personnalisé : " + p.legende)}
-        <figcaption>${esc(p.legende)}</figcaption>
-      </figure>`).join("");
-  }
 
   /* ── Avis ── */
   const avisCard = (a) => `
