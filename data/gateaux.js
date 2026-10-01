@@ -178,3 +178,15 @@ window.OPD_GATEAUX = [
     disponible: true
   }
 ];
+
+/* ============================================================
+   GÂTEAUX PERSONNALISÉS — galerie de réalisations
+   photo : assets/img/personnalises/...   legende : texte court
+   ============================================================ */
+window.OPD_PERSONNALISES = [
+  { photo: "assets/img/personnalises/joyeux-anniversaire.jpg", legende: "Joyeux anniversaire fleuri" },
+  { photo: "assets/img/personnalises/she-he.jpg",              legende: "Gender reveal" },
+  { photo: "assets/img/personnalises/hello-28.jpg",            legende: "Hello 28" },
+  { photo: "assets/img/personnalises/bye-bye-single-life.jpg", legende: "Enterrement de vie de jeune fille" },
+  { photo: "assets/img/personnalises/season-20.jpg",           legende: "Season 20, final episode" }
+];

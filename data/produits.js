@@ -24,12 +24,13 @@ const U = (id) => `https://images.unsplash.com/photo-${id}?w=500&q=80`;
 window.OPD_PRODUITS = [
   // Viennoiseries
   { categorie: "viennoiseries", nom: "Croissant Chocolat Noisette", description: "Pâte feuilletée, chocolat fondant et éclats de noisette", prix: 2.7, badge: "Incontournable", photo: "assets/img/produits/croissant-chocolat-noisette.jpg" },
+  { categorie: "viennoiseries", nom: "New York Pistache", description: "Roulé feuilleté, crème pistache et pistaches concassées", prix: 9.5, badge: "Signature", photo: "assets/img/produits/new-york-pistache.jpg" },
+  { categorie: "viennoiseries", nom: "Croissant aux Amandes", description: "Crème d'amande et amandes effilées", prix: 2.5, photo: "assets/img/produits/croissant-amandes.jpg" },
+  { categorie: "viennoiseries", nom: "Croissant Chocolat Pistache", description: "Glaçage chocolat et éclats de pistache", prix: 0, photo: "assets/img/produits/viennoiserie-1.jpg" },
+  { categorie: "viennoiseries", nom: "Roulé Pistache Chocolat", description: "Feuilletage roulé, crème pistache et pépites de chocolat", prix: 0, photo: "assets/img/produits/viennoiserie-2.jpg" },
+  { categorie: "viennoiseries", nom: "Viennoiserie Crème & Pépites", description: "Fourrée crème et pépites de chocolat, éclats de pistache", prix: 0, photo: "assets/img/produits/viennoiserie-3.jpg" },
+  { categorie: "viennoiseries", nom: "Pain au Chocolat Pistache", description: "Glaçage chocolat et éclats de pistache", prix: 0, photo: "assets/img/produits/viennoiserie-4.jpg" },
   { categorie: "viennoiseries", nom: "Croissant", description: "Pur beurre, feuilletage croustillant", prix: 2, photo: U("1555507036-ab1f4038024a") },
-  { categorie: "viennoiseries", nom: "Pain au Chocolat", description: "Pâte feuilletée pur beurre, chocolat", prix: 2.4, photo: U("1623334044303-241021148842") },
-  { categorie: "viennoiseries", nom: "Pain aux Raisins", description: "Crème pâtissière et raisins secs", prix: 2.4, photo: U("1608198093002-ad4e005484ec") },
-  { categorie: "viennoiseries", nom: "Pain Suisse", description: "Crème pâtissière et pépites de chocolat", prix: 4.5, photo: "" },
-  { categorie: "viennoiseries", nom: "Croissant Pistache", description: "Croissant pur beurre à la pistache", prix: 4, photo: "" },
-  { categorie: "viennoiseries", nom: "New York Pistache", description: "Le fameux rouleau new-yorkais, version pistache", prix: 9.5, photo: "" },
 
   // Pâtisseries individuelles
   { categorie: "patisseries", nom: "O Pistacho Gourmand", description: "Notre gourmandise signature à la pistache", prix: 10.5, badge: "Signature", photo: "assets/img/produits/o-pistacho-gourmand.jpg" },
@@ -38,10 +39,10 @@ window.OPD_PRODUITS = [
   { categorie: "patisseries", nom: "Chocolat Noisette", description: "Couches croustillantes, crème noisette, glaçage chocolat", prix: 9.5, photo: "assets/img/produits/chocolat-noisette.jpg" },
   { categorie: "patisseries", nom: "O Framboise", description: "Biscuit, confit de framboise, macaron", prix: 9.5, photo: "assets/img/produits/o-framboise.jpg" },
   { categorie: "patisseries", nom: "Tarte Pistache", description: "Pâte sablée, crème pistache, pistaches concassées", prix: 8, photo: "assets/img/produits/tarte-pistache.jpg" },
+  { categorie: "patisseries", nom: "Éclair aux Fruits", description: "Pâte à choux, crème pâtissière et fruits frais", prix: 6, photo: "assets/img/produits/eclair-aux-fruits.jpg" },
+  { categorie: "patisseries", nom: "Cheesecake Pistache Citron", description: "Crème pistache, citron et meringue flambée", prix: 12, badge: "Nouveau", photo: "assets/img/produits/cheesecake-pistache-citron.jpg" },
+  { categorie: "patisseries", nom: "Cheesecake Fruits Rouges", description: "Fromage frais, cœur et nappage fruits rouges", prix: 0, photo: "assets/img/produits/cheesecake-fruits-rouges.jpg" },
   { categorie: "patisseries", nom: "Mille-feuille Vanille", description: "Feuilletage caramélisé, crème vanille", prix: 3.5, photo: U("1587668178277-295251f900ce") },
-  { categorie: "patisseries", nom: "Tarte Citron", description: "Crème citron et meringue légère", prix: 7.5, photo: "" },
-  { categorie: "patisseries", nom: "Éclair Chocolat", description: "Pâte à choux, crème chocolat", prix: 6, photo: U("1571115177098-24ec42ed204d") },
-  { categorie: "patisseries", nom: "Tarte aux Fruits", description: "Pâte sablée, fruits frais de saison", prix: 6.5, photo: U("1519915028121-7d3463d20b13") },
 
   // Pains & cakes — farines spéciales
   { categorie: "pains", nom: "Baguette Tradition", description: "Croûte craquante, mie alvéolée", prix: 0, badge: "Incontournable", photo: "assets/img/produits/baguette-tradition.jpg" },
@@ -64,14 +65,18 @@ window.OPD_PRODUITS = [
   { categorie: "snacks", nom: "Mini Tunisien", description: "Pain semoule, thon, œuf, piment et légumes", prix: 0, photo: "assets/img/produits/mini-tunisien.jpg" },
   { categorie: "snacks", nom: "Mini Omelette", description: "Omelette maison, tomate et courgette", prix: 5, photo: "assets/img/produits/mini-omelette.jpg" },
   { categorie: "snacks", nom: "Mini Jambon", description: "Jambon, fromage et crudités", prix: 5.5, photo: "assets/img/produits/mini-jambon.jpg" },
+  { categorie: "snacks", nom: "Salade César", description: "Poulet grillé, croûtons maison, parmesan, sauce César", prix: 15, badge: "Best-seller", photo: "assets/img/produits/salade-cesar.jpg" },
+  { categorie: "snacks", nom: "Salade de Riz aux Crevettes", description: "Riz, crevettes grillées, maïs, olives et légumes", prix: 18, photo: "assets/img/produits/salade-riz-crevettes.jpg" },
+  { categorie: "snacks", nom: "Sandwich Poulet Champignons", description: "Pain aux graines, poulet et champignons à la crème", prix: 12, photo: "assets/img/produits/sandwich-poulet-champignons.jpg" },
+  { categorie: "snacks", nom: "Petit-déjeuner Ô Pain Doré", description: "Croissant aux céréales, œuf, fromage et salade", prix: 0, photo: "assets/img/produits/petit-dejeuner.jpg" },
 
   // Café & boissons
   { categorie: "boissons", nom: "Café Glacé", description: "Espresso, lait frais et glaçons", prix: 9, badge: "Coup de cœur", photo: "assets/img/produits/cafe-glace.jpg" },
   { categorie: "boissons", nom: "Café Spécial", description: "La recette maison", prix: 5, photo: "assets/img/produits/cafe-special.jpg" },
   { categorie: "boissons", nom: "Café Crème", description: "Espresso allongé au lait", prix: 4.5, photo: "assets/img/produits/cafe-creme.jpg" },
   { categorie: "boissons", nom: "Mojito Spécial", description: "Sans alcool, fruits rouges, citron vert et menthe", prix: 12, photo: "assets/img/produits/mojito-special.jpg" },
-  { categorie: "boissons", nom: "Espresso", description: "Serré et intense", prix: 3.5, photo: "" },
-  { categorie: "boissons", nom: "Capucin", description: "Espresso et mousse de lait", prix: 4, photo: U("1495774856032-8b90bbb32b32") },
-  { categorie: "boissons", nom: "Chocolat Chaud", description: "Onctueux et réconfortant", prix: 7.5, photo: U("1544145945-f90425340c7e") },
+  { categorie: "boissons", nom: "Cappuccino Crémeux", description: "Chantilly et filet de chocolat", prix: 0, photo: "assets/img/produits/cappuccino-opera.jpg" },
+  { categorie: "boissons", nom: "Jus Kiwi Banane", description: "Pressé minute", prix: 10, photo: "assets/img/produits/jus-kiwi-banane.jpg" },
+  { categorie: "boissons", nom: "Jus d'Ananas", description: "Ananas frais", prix: 0, photo: "assets/img/produits/jus-ananas.jpg" },
   { categorie: "boissons", nom: "Jus d'Orange", description: "Pressé minute", prix: 6.5, photo: U("1556679343-c7306c1976bc") }
 ];

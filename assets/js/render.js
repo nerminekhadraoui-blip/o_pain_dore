@@ -132,6 +132,18 @@
       <span class="avis-summary-count">${C.nombreAvisGoogle ? esc(C.nombreAvisGoogle) + " avis " : ""}sur Google</span>`;
   });
 
+  /* ── Gâteaux personnalisés ── */
+  const persoGrid = $("#persoGrid");
+  if (persoGrid) {
+    const items = window.OPD_PERSONNALISES || [];
+    if (!items.length) persoGrid.closest(".perso")?.remove();
+    else persoGrid.innerHTML = items.map((p) => `
+      <figure class="perso-item">
+        ${imgTag(p.photo, "Gâteau personnalisé : " + p.legende)}
+        <figcaption>${esc(p.legende)}</figcaption>
+      </figure>`).join("");
+  }
+
   /* ── Avis ── */
   const avisCard = (a) => `
       <div class="avis-card">

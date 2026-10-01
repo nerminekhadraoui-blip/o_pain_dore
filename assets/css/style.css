@@ -1880,3 +1880,53 @@ input, textarea {
   text-transform: uppercase;
   color: var(--color-text-light);
 }
+
+/* ── Gâteaux personnalisés ── */
+.perso { margin-top: 80px; }
+.perso-head { text-align: center; margin-bottom: 36px; }
+.perso-head h3 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 400;
+  color: var(--color-cream);
+  margin-bottom: 10px;
+}
+.perso-head h3 em { color: var(--color-gold); }
+.perso-head p {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  color: rgba(245, 240, 232, 0.6);
+  max-width: 560px;
+  margin: 0 auto;
+}
+.perso-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+.perso-item {
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1;
+  border: 1px solid rgba(198, 169, 108, 0.15);
+}
+.perso-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-out-expo);
+}
+.perso-item:hover img { transform: scale(1.05); }
+.perso-item figcaption {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 24px 12px 10px;
+  background: linear-gradient(transparent, rgba(15, 13, 11, 0.75));
+  color: var(--color-cream);
+  font-family: var(--font-serif);
+  font-size: 15px;
+  text-align: center;
+}
+@media (max-width: 1024px) { .perso-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 600px)  { .perso-grid { grid-template-columns: repeat(2, 1fr); } }
