@@ -19,8 +19,6 @@ window.OPD_CATEGORIES = [
   { id: "boissons",      nom: "Café & Boissons" }
 ];
 
-const U = (id) => `https://images.unsplash.com/photo-${id}?w=500&q=80`;
-
 window.OPD_PRODUITS = [
   // Viennoiseries
   { categorie: "viennoiseries", nom: "Croissant Chocolat Noisette", description: "Pâte feuilletée, chocolat fondant et éclats de noisette", prix: 2.7, badge: "Incontournable", photo: "assets/img/produits/croissant-chocolat-noisette.jpg" },
@@ -30,7 +28,6 @@ window.OPD_PRODUITS = [
   { categorie: "viennoiseries", nom: "Roulé Pistache Chocolat", description: "Feuilletage roulé, crème pistache et pépites de chocolat", prix: 0, photo: "assets/img/produits/viennoiserie-2.jpg" },
   { categorie: "viennoiseries", nom: "Viennoiserie Crème & Pépites", description: "Fourrée crème et pépites de chocolat, éclats de pistache", prix: 0, photo: "assets/img/produits/viennoiserie-3.jpg" },
   { categorie: "viennoiseries", nom: "Pain au Chocolat Pistache", description: "Glaçage chocolat et éclats de pistache", prix: 0, photo: "assets/img/produits/viennoiserie-4.jpg" },
-  { categorie: "viennoiseries", nom: "Croissant", description: "Pur beurre, feuilletage croustillant", prix: 2, photo: U("1555507036-ab1f4038024a") },
 
   // Pâtisseries individuelles
   { categorie: "patisseries", nom: "O Pistacho Gourmand", description: "Notre gourmandise signature à la pistache", prix: 10.5, badge: "Signature", photo: "assets/img/produits/o-pistacho-gourmand.jpg" },
@@ -42,7 +39,6 @@ window.OPD_PRODUITS = [
   { categorie: "patisseries", nom: "Éclair aux Fruits", description: "Pâte à choux, crème pâtissière et fruits frais", prix: 6, photo: "assets/img/produits/eclair-aux-fruits.jpg" },
   { categorie: "patisseries", nom: "Cheesecake Pistache Citron", description: "Crème pistache, citron et meringue flambée", prix: 12, badge: "Nouveau", photo: "assets/img/produits/cheesecake-pistache-citron.jpg" },
   { categorie: "patisseries", nom: "Cheesecake Fruits Rouges", description: "Fromage frais, cœur et nappage fruits rouges", prix: 0, photo: "assets/img/produits/cheesecake-fruits-rouges.jpg" },
-  { categorie: "patisseries", nom: "Mille-feuille Vanille", description: "Feuilletage caramélisé, crème vanille", prix: 3.5, photo: U("1587668178277-295251f900ce") },
 
   // Pains & cakes — farines spéciales
   { categorie: "pains", nom: "Baguette Tradition", description: "Croûte craquante, mie alvéolée", prix: 0, badge: "Incontournable", photo: "assets/img/produits/baguette-tradition.jpg" },
@@ -51,10 +47,6 @@ window.OPD_PRODUITS = [
   { categorie: "pains", nom: "Pain Semoule", description: "Pain à la semoule, croûte dorée", prix: 0, photo: "assets/img/produits/pain-semoule.jpg" },
   { categorie: "pains", nom: "Jackot", description: "Le pain tunisien à la mie moelleuse", prix: 0, photo: "assets/img/produits/jackot.jpg" },
   { categorie: "pains", nom: "Pain au Quinoa", description: "Riche en fibres et plein d'énergie", prix: 0, badge: "Farine spéciale", photo: "assets/img/produits/pain-quinoa.jpg" },
-  { categorie: "pains", nom: "Pain aux Céréales", description: "Farine multicéréales et graines", prix: 0, badge: "Farine spéciale", photo: U("1549931319-a545753467c8") },
-  { categorie: "pains", nom: "Pain au Chia", description: "Farine spéciale et graines de chia", prix: 0, badge: "Farine spéciale", photo: U("1509440159596-0249088772ff") },
-  { categorie: "pains", nom: "Pain de Maïs", description: "Farine de maïs, en forme de brioche", prix: 0, badge: "Farine spéciale", photo: U("1585478259715-876acc5be8eb") },
-  { categorie: "pains", nom: "Cake Citron Chia", description: "Cake entier au citron et graines de chia", prix: 19, photo: "" },
 
   // Snacks & salés
   { categorie: "snacks", nom: "Salade Boulgour Poulet Pesto", description: "Boulgour au pesto, poulet grillé, maïs, tomates, parmesan", prix: 15.5, photo: "assets/img/produits/salade-boulgour-poulet-pesto.jpg" },
@@ -77,6 +69,5 @@ window.OPD_PRODUITS = [
   { categorie: "boissons", nom: "Mojito Spécial", description: "Sans alcool, fruits rouges, citron vert et menthe", prix: 12, photo: "assets/img/produits/mojito-special.jpg" },
   { categorie: "boissons", nom: "Cappuccino Crémeux", description: "Chantilly et filet de chocolat", prix: 0, photo: "assets/img/produits/cappuccino-opera.jpg" },
   { categorie: "boissons", nom: "Jus Kiwi Banane", description: "Pressé minute", prix: 10, photo: "assets/img/produits/jus-kiwi-banane.jpg" },
-  { categorie: "boissons", nom: "Jus d'Ananas", description: "Ananas frais", prix: 0, photo: "assets/img/produits/jus-ananas.jpg" },
-  { categorie: "boissons", nom: "Jus d'Orange", description: "Pressé minute", prix: 6.5, photo: U("1556679343-c7306c1976bc") }
+  { categorie: "boissons", nom: "Jus d'Ananas", description: "Ananas frais", prix: 0, photo: "assets/img/produits/jus-ananas.jpg" }
 ];
