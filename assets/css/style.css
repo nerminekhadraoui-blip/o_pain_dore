@@ -444,7 +444,7 @@ input, textarea {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url('../img/accueil/vitrine-pains.jpg');
+  background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1920&q=80');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
