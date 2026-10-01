@@ -1954,3 +1954,12 @@ input, textarea {
   .gateaux-cta-actions { flex-direction: column; align-items: stretch; }
   .gateaux-cta-actions .btn { justify-content: center; padding: 16px 12px; font-size: 10px; letter-spacing: 0.1em; white-space: nowrap; }
 }
+
+/* ── Accueil : iPhone/Android ne gèrent pas l'image fixe (photo floue et zoomée) ── */
+@media (max-width: 1024px), (hover: none) {
+  .hero-bg {
+    background-attachment: scroll;
+    background-position: center 40%;
+    transform: none !important;
+  }
+}
