@@ -56,12 +56,14 @@ window.OPD_PRODUITS = [
   { categorie: "pains", nom: "Cake Citron Chia", description: "Cake entier au citron et graines de chia", prix: 19, photo: "" },
 
   // Snacks & salés
-  { categorie: "snacks", nom: "Sandwich Jambon Fromage", description: "Baguette fraîche, jambon, fromage et crudités", prix: 9, photo: U("1528735602780-2552fd46c7af") },
-  { categorie: "snacks", nom: "Le Tunisien", description: "Le sandwich de la maison", prix: 7.5, photo: "" },
-  { categorie: "snacks", nom: "Croissant Saumon", description: "Croissant garni au saumon", prix: 8.5, photo: "" },
-  { categorie: "snacks", nom: "Quiche Poulet", description: "Pâte maison, garniture au poulet", prix: 6.5, photo: U("1600891964599-f61ba0e24092") },
-  { categorie: "snacks", nom: "Salade César", description: "Poulet, croûtons, parmesan, sauce César", prix: 15, photo: U("1512621776951-a57141f2eefd") },
-  { categorie: "snacks", nom: "Salade Niçoise", description: "La grande classique", prix: 14.5, photo: "" },
+  { categorie: "snacks", nom: "Salade Boulgour Poulet Pesto", description: "Boulgour au pesto, poulet grillé, maïs, tomates, parmesan", prix: 15.5, photo: "assets/img/produits/salade-boulgour-poulet-pesto.jpg" },
+  { categorie: "snacks", nom: "Salade Italienne", description: "Pommes de terre, courgettes grillées, thon, œuf, olives, roquette", prix: 15, photo: "assets/img/produits/salade-italienne.jpg" },
+  { categorie: "snacks", nom: "Salade Quinoa Saumon", description: "Quinoa, saumon, légumes frais et citron", prix: 22, photo: "assets/img/produits/salade-quinoa-saumon.jpg" },
+  { categorie: "snacks", nom: "Sandwich au Saumon", description: "Pain aux graines, saumon, crudités et aneth", prix: 14.5, photo: "assets/img/produits/sandwich-saumon.jpg" },
+  { categorie: "snacks", nom: "Sandwich à la Bresaola", description: "Pain aux graines, bresaola, fromage et salade", prix: 0, photo: "assets/img/produits/sandwich-bresaola.jpg" },
+  { categorie: "snacks", nom: "Mini Tunisien", description: "Pain semoule, thon, œuf, piment et légumes", prix: 0, photo: "assets/img/produits/mini-tunisien.jpg" },
+  { categorie: "snacks", nom: "Mini Omelette", description: "Omelette maison, tomate et courgette", prix: 5, photo: "assets/img/produits/mini-omelette.jpg" },
+  { categorie: "snacks", nom: "Mini Jambon", description: "Jambon, fromage et crudités", prix: 5.5, photo: "assets/img/produits/mini-jambon.jpg" },
 
   // Café & boissons
   { categorie: "boissons", nom: "Café Glacé", description: "Espresso, lait frais et glaçons", prix: 9, badge: "Coup de cœur", photo: "assets/img/produits/cafe-glace.jpg" },
