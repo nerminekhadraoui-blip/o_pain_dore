@@ -44,12 +44,16 @@ window.OPD_PRODUITS = [
   { categorie: "patisseries", nom: "Tarte aux Fruits", description: "Pâte sablée, fruits frais de saison", prix: 6.5, photo: U("1519915028121-7d3463d20b13") },
 
   // Pains & cakes — farines spéciales
-  { categorie: "pains", nom: "Baguette Tradition", description: "Croûte craquante, mie alvéolée", prix: 0, photo: U("1574085733277-851d9d856a3a") },
+  { categorie: "pains", nom: "Baguette Tradition", description: "Croûte craquante, mie alvéolée", prix: 0, badge: "Incontournable", photo: "assets/img/produits/baguette-tradition.jpg" },
+  { categorie: "pains", nom: "Baguette Française", description: "La classique, dorée et croustillante", prix: 0, photo: "assets/img/produits/baguette-francaise.jpg" },
+  { categorie: "pains", nom: "Banette", description: "Pointes effilées, croûte fine et croustillante", prix: 0, photo: "assets/img/produits/banette.jpg" },
+  { categorie: "pains", nom: "Pain Semoule", description: "Pain à la semoule, croûte dorée", prix: 0, photo: "assets/img/produits/pain-semoule.jpg" },
+  { categorie: "pains", nom: "Jackot", description: "Le pain tunisien à la mie moelleuse", prix: 0, photo: "assets/img/produits/jackot.jpg" },
+  { categorie: "pains", nom: "Pain au Quinoa", description: "Riche en fibres et plein d'énergie", prix: 0, badge: "Farine spéciale", photo: "assets/img/produits/pain-quinoa.jpg" },
   { categorie: "pains", nom: "Pain aux Céréales", description: "Farine multicéréales et graines", prix: 0, badge: "Farine spéciale", photo: U("1549931319-a545753467c8") },
   { categorie: "pains", nom: "Pain au Chia", description: "Farine spéciale et graines de chia", prix: 0, badge: "Farine spéciale", photo: U("1509440159596-0249088772ff") },
   { categorie: "pains", nom: "Pain de Maïs", description: "Farine de maïs, en forme de brioche", prix: 0, badge: "Farine spéciale", photo: U("1585478259715-876acc5be8eb") },
   { categorie: "pains", nom: "Cake Citron Chia", description: "Cake entier au citron et graines de chia", prix: 19, photo: "" },
-  { categorie: "pains", nom: "Cake Céréales", description: "Cake entier aux céréales", prix: 24, photo: "" },
 
   // Snacks & salés
   { categorie: "snacks", nom: "Sandwich Jambon Fromage", description: "Baguette fraîche, jambon, fromage et crudités", prix: 9, photo: U("1528735602780-2552fd46c7af") },
