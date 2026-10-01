@@ -1884,8 +1884,14 @@ input, textarea {
 /* ── Gâteaux personnalisés (cartes) ── */
 .gateau-perso .gateau-img img { object-position: center 60%; }
 
-/* ── L'espace : galerie en portrait (photos verticales) ── */
-.espace-gallery { grid-template-columns: repeat(3, 1fr); }
+/* ── L'espace : terrasse en bandeau + 5 photos portrait ── */
+.espace-gallery { grid-template-columns: repeat(5, 1fr); }
 .espace-gallery .gallery-item,
 .espace-gallery .gallery-item.gallery-large { grid-column: auto; aspect-ratio: 4/5; }
-@media (max-width: 900px) { .espace-gallery { grid-template-columns: repeat(2, 1fr); } }
+.espace-gallery .gallery-item.gallery-wide { grid-column: 1 / -1; aspect-ratio: 21/9; }
+.espace-gallery .gallery-wide img { object-position: center 62%; }
+@media (max-width: 900px) {
+  .espace-gallery { grid-template-columns: repeat(2, 1fr); }
+  .espace-gallery .gallery-item.gallery-wide { aspect-ratio: 4/3; }
+  .espace-gallery .gallery-item:last-child { grid-column: 1 / -1; aspect-ratio: 4/3; }
+}
