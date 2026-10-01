@@ -55,3 +55,5 @@ o_pain_dore/
 
 HTML, CSS et JavaScript sans framework ni étape de compilation : le dossier est publié tel quel.
 Hébergement prévu : GitHub Pages (gratuit, HTTPS inclus).
+
+> Après une modification des fichiers `.js` ou `.css`, changer le numéro `?v=…` dans `index.html` pour que les navigateurs rechargent la nouvelle version.
